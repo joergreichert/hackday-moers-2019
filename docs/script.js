@@ -35,56 +35,64 @@ function scaleBeleuchtung(absValue) {
     return ((absValue - minBeleuchtung) * 100) / absSpan
 }
 
+var minSchule = 0;
+var maxSchule = 10;
+
+function scaleSchule(absValue) {
+    var absSpan = maxSchule - minSchule
+    return ((absValue - minSchule) * 100) / absSpan
+}
+
 //Data
 var d = [
     [ // Asberg
         { axis: "Einwohneranzahl", value: scaleEinwohner(13971), realValue: 13971 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(947), realValue: 947 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(3), realValue: 3 }
     ], [ // Eick
         { axis: "Einwohneranzahl", value: scaleEinwohner(5214), realValue: 5214 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(384), realValue: 384 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(2), realValue: 2 }
     ], [ // Hülsdonk
         { axis: "Einwohneranzahl", value: scaleEinwohner(5577), realValue: 5577 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(615), realValue: 615 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
-    ], [ // Moers-Mitte
-        { axis: "Einwohneranzahl", value: scaleEinwohner(10222), realValue: 10222 },
-        { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(846), realValue: 846 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
-    ], [ // Moers-Ost
-        { axis: "Einwohneranzahl", value: scaleEinwohner(10879), realValue: 10879 },
-        { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(687), realValue: 687 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(1), realValue: 1 }
     ], [ // Kapellen
         { axis: "Einwohneranzahl", value: scaleEinwohner(11336), realValue: 11336 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(903), realValue: 903 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(2), realValue: 2 }
     ], [ // Meerbeck
         { axis: "Einwohneranzahl", value: scaleEinwohner(11403), realValue: 11403 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(707), realValue: 707 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(4), realValue: 4 }
     ], [ // Meerfeld / Eicker Wiesen
         { axis: "Einwohneranzahl", value: scaleEinwohner(4795), realValue: 4795 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(496), realValue: 496 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(3), realValue: 3 }
+    ], [ // Moers-Mitte
+        { axis: "Einwohneranzahl", value: scaleEinwohner(10222), realValue: 10222 },
+        { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(846), realValue: 846 },
+        { axis: "Schulen", value: scaleSchule(6), realValue: 6 }
+    ], [ // Moers-Ost
+        { axis: "Einwohneranzahl", value: scaleEinwohner(10879), realValue: 10879 },
+        { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(687), realValue: 687 },
+        { axis: "Schulen", value: scaleSchule(1), realValue: 1 }
     ], [ // Repelen
         { axis: "Einwohneranzahl", value: scaleEinwohner(11975), realValue: 11975 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(921), realValue: 921 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(3), realValue: 3 }
     ], [ // Schwafheim
         { axis: "Einwohneranzahl", value: scaleEinwohner(7340), realValue: 7340 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(656), realValue: 656 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(1), realValue: 1 }
     ], [ // Utfort
         { axis: "Einwohneranzahl", value: scaleEinwohner(4982), realValue: 4982 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(492), realValue: 492 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(0), realValue: 0 }
     ], [ // Vinn
         { axis: "Einwohneranzahl", value: scaleEinwohner(9206), realValue: 9206 },
         { axis: "Straßenbeleuchtung", value: scaleBeleuchtung(575), realValue: 575 },
-        { axis: "Schulen", value: 0.42, realValue: 0.42 }
+        { axis: "Schulen", value: scaleSchule(2), realValue: 2 }
     ]
 ];
 
