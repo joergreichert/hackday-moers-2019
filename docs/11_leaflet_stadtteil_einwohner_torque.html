@@ -65,6 +65,14 @@
 			}
 			initialisiereKarte();
 		};
+		// GeoJSON zu JSON
+		var namenMap = {};
+		// ist das korrekt??
+		namenMap['Meerfeld / Eicker Wiesen'] = 'Rheinkamp-Mitte'
+
+		var geoJsonToJsonName = function (name) {
+			return namenMap[name] || name;
+		};
 		document.getElementById("jahrAuswahl").value = ausgewaehltesJahr;
 		document.getElementById("ausgewaehltesJahr").innerHTML = ausgewaehltesJahr;
 		var initialisiereKarte = function () {
@@ -78,7 +86,7 @@
 
 				var ebenenStil = function (feature) {
 					return {
-						fillColor: stufenFarbe(wertFuerOrtsteilUndJahr(feature.properties.BEZIRKSBEZ, ausgewaehltesJahr)),
+						fillColor: stufenFarbe(wertFuerOrtsteilUndJahr(geoJsonToJsonName(feature.properties.BEZIRKSBEZ), ausgewaehltesJahr)),
 						weight: 2,
 						opacity: 1,
 						color: 'white',
@@ -112,7 +120,7 @@
 							var hoverKoordinaten = [centroid[1], centroid[0]];
 						if (karte) {
 							var eigenschaften = ereignis.layer.feature.properties
-								var ortsteilName = eigenschaften.BEZIRKSBEZ
+								var ortsteilName = geoJsonToJsonName(eigenschaften.BEZIRKSBEZ)
 								var einwohnerAnzahl = wertFuerOrtsteilUndJahr(ortsteilName, ausgewaehltesJahr);
 							var inhalt = "<h3>" + ortsteilName + "</h3>Einwohner " + ausgewaehltesJahr + ": " + einwohnerAnzahl;
 							geojsonEbenenHover = L.popup()
@@ -132,15 +140,15 @@
 				legende = L.control({
 						position: 'bottomright'
 					});
-				var stufen = [0, 1000, 2500, 5000, 10000, 15000, 20000, 25000];
+				var stufen = [0, 5000, 6500, 8000, 9500, 11000, 12500, 14000];
 				var stufenFarbe = function (wert) {
-					return wert > 25000 ? '#800026' :
-					wert > 20000 ? '#BD0026' :
-					wert > 15000 ? '#E31A1C' :
-					wert > 10000 ? '#FC4E2A' :
-					wert > 5000 ? '#FD8D3C' :
-					wert > 2500 ? '#FEB24C' :
-					wert > 1000 ? '#FED976' :
+					return wert > 14000 ? '#800026' :
+					wert > 12500 ? '#BD0026' :
+					wert > 11000 ? '#E31A1C' :
+					wert > 9500 ? '#FC4E2A' :
+					wert > 8000 ? '#FD8D3C' :
+					wert > 6500 ? '#FEB24C' :
+					wert > 5000 ? '#FED976' :
 					'#FFEDA0';
 				};
 				var registriereLegende = function () {
